@@ -4,47 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="412e8871-332b-4274-95b5-0c51bb0dca6b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejemplo01/ejemplo01.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejemplo02/src/org/rflores/beans/Alpaca.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejemplo02/src/org/rflores/beans/Animal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejemplo02/src/org/rflores/beans/AnimalFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejemplo02/src/org/rflores/beans/AnimalFactory2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejemplo02/src/org/rflores/beans/Caballo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejemplo02/src/org/rflores/beans/Cabra.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejemplo02/src/org/rflores/beans/Cerdo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejemplo02/src/org/rflores/beans/Conejo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejemplo02/src/org/rflores/beans/Gato.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejemplo02/src/org/rflores/beans/Pato.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejemplo02/src/org/rflores/beans/Perro.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejemplo02/src/org/rflores/beans/Tipo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejemplo02/src/org/rflores/beans/Vaca.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejemplo02/src/org/rflores/pruebas/Prueba01.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejemplo02/src/org/rflores/pruebas/Prueba02.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejemplo02/src/org/rflores/util/Util.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sesion02/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sesion02/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sesion02/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sesion02/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sesion02/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sesion02/sesion02.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sesion02/src/me/rflores/modelo/daos/CursoDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sesion02/src/me/rflores/modelo/daos/impl/CursoDaoDataBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sesion02/src/me/rflores/modelo/daos/impl/CursoDaoFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sesion02/src/me/rflores/modelo/daos/impl/CursoDaoMemory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sesion02/src/me/rflores/modelo/daos/impl/CursoDaoXml.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sesion02/src/me/rflores/modelo/daos/impl/DaoFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sesion02/src/me/rflores/modelo/entidades/Curso.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sesion02/src/me/rflores/pruebas/Prueba01.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sesion02/src/me/rflores/pruebas/Prueba02.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sesion02/src/me/rflores/servicios/CursoService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sesion02/src/me/rflores/servicios/impl/CursoServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sesion02/src/me/rflores/util/Tipo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../sesion02/src/me/rflores/util/Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="412e8871-332b-4274-95b5-0c51bb0dca6b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,24 +28,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Prueba01.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Prueba02 (1).executor&quot;: &quot;Run&quot;,
-    &quot;Application.Prueba02.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Prueba03.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Documents/personal/learning/java/cursos-java/programmer/sesion01/ejemplo02/src/org/rflores&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Prueba01.executor": "Run",
+    "Application.Prueba02 (1).executor": "Run",
+    "Application.Prueba02.executor": "Run",
+    "Application.Prueba03.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Documents/personal/learning/java/cursos-java/programmer/sesion01",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "configurable.group.build"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Documents\personal\learning\java\cursos-java\programmer\sesion01\ejemplo02\src\org\rflores" />
