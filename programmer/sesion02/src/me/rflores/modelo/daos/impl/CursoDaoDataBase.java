@@ -17,7 +17,7 @@ public class CursoDaoDataBase implements CursoDao {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Integer id) {
         System.out.println("CursoDaoDataBase.delete");
     }
 
@@ -28,8 +28,14 @@ public class CursoDaoDataBase implements CursoDao {
     }
 
     @Override
-    public Curso find(int id) {
+    public Curso find(Integer id) {
         System.out.println("CursoDaoDataBase.find");
         return null;
+    }
+
+    @Override
+    public List<Curso> findByRangeCreditos(Integer minimo, Integer maximo) {
+        System.out.println("CursoDaoDataBase.findByRangeCreditos");
+        return List.of();
     }
 }

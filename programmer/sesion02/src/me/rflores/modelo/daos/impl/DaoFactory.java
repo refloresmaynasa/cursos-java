@@ -1,5 +1,6 @@
 package me.rflores.modelo.daos.impl;
 
+import me.rflores.modelo.daos.AlumnoDao;
 import me.rflores.modelo.daos.CursoDao;
 import me.rflores.util.Tipo;
 
@@ -26,6 +27,24 @@ public class DaoFactory {
             }
             case MEMORY -> {
                 return new CursoDaoMemory();
+            }
+        }
+        return null;
+    }
+
+    public AlumnoDao getAlumnoDao(Tipo tipo) {
+        switch (tipo) {
+            case DB -> {
+                return new AlumnoDaoDataBase();
+            }
+            case FILE -> {
+                return new AlumnoDaoFile();
+            }
+            case XML -> {
+                return new AlumnoDaoXml();
+            }
+            case MEMORY -> {
+                return new AlumnoDaoMemory();
             }
         }
         return null;

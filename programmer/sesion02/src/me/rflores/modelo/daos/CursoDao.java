@@ -4,14 +4,6 @@ import me.rflores.modelo.entidades.Curso;
 
 import java.util.List;
 
-public interface CursoDao {
-    public void create(Curso curso);
-
-    public void update(Curso curso);
-
-    public void delete(int id);
-
-    public List<Curso> findAll();
-
-    public Curso find(int id);
+public interface CursoDao extends EntidadDao<Curso, Integer> {
+    public List<Curso> findByRangeCreditos(Integer minimo, Integer maximo);
 }

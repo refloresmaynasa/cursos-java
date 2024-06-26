@@ -17,7 +17,7 @@ public class CursoDaoFile implements CursoDao {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Integer id) {
         System.out.println("CursoDaoFile.delete");
     }
 
@@ -28,8 +28,14 @@ public class CursoDaoFile implements CursoDao {
     }
 
     @Override
-    public Curso find(int id) {
+    public Curso find(Integer id) {
         System.out.println("CursoDaoFile.find");
         return null;
+    }
+
+    @Override
+    public List<Curso> findByRangeCreditos(Integer minimo, Integer maximo) {
+        System.out.println("CursoDaoFile.findByRangeCreditos");
+        return List.of();
     }
 }
