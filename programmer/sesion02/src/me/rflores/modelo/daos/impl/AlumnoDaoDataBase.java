@@ -44,4 +44,24 @@ public class AlumnoDaoDataBase implements AlumnoDao {
         System.out.println("AlumnoDaoDataBase.findByEstado");
         return List.of();
     }
+
+    @Override
+    public List<Alumno> findAllOrderByNombre() {
+        return List.of();
+    }
+
+    @Override
+    public List<Alumno> findAllOrderByPromedio() {
+        return List.of();
+    }
+
+    @Override
+    public float getPromedioAlumnos() {
+        return 0;
+    }
+
+    @Override
+    public List<Alumno> findAllByPromedio(double min, double max) {
+        return List.of();
+    }
 }

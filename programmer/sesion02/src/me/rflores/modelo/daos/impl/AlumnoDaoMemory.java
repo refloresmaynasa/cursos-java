@@ -2,10 +2,12 @@ package me.rflores.modelo.daos.impl;
 
 import me.rflores.modelo.daos.AlumnoDao;
 import me.rflores.modelo.entidades.Alumno;
-import me.rflores.modelo.entidades.Curso;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.OptionalDouble;
+import java.util.stream.Collectors;
 
 public class AlumnoDaoMemory implements AlumnoDao {
     private List<Alumno> alumnos;
@@ -69,5 +71,40 @@ public class AlumnoDaoMemory implements AlumnoDao {
     public List<Alumno> findByEstado(String estado) {
         System.out.println("AlumnoDaoMemory.findByEstado");
         return List.of();
+    }
+
+    @Override
+    public List<Alumno> findAllOrderByNombre() {
+        List<Alumno> resultado = alumnos.stream()
+                .sorted(Comparator.comparing(Alumno::nombre))
+                .collect(Collectors.toList());
+
+        return resultado;
+    }
+
+    @Override
+    public List<Alumno> findAllOrderByPromedio() {
+        List<Alumno> resultado = alumnos.stream()
+                .sorted(Comparator.comparing(Alumno::promedio).reversed())
+                .collect(Collectors.toList());
+
+        return resultado;
+    }
+
+    @Override
+    public float getPromedioAlumnos() {
+        OptionalDouble resultado = alumnos.stream()
+                .mapToDouble(Alumno::promedio)
+                .average();
+
+        return resultado.isPresent() ? (float) resultado.getAsDouble() : 0;
+    }
+
+    @Override
+    public List<Alumno> findAllByPromedio(double min, double max) {
+        return alumnos.stream()
+                .filter(a -> a.promedio() >= min)
+                .filter(a -> a.promedio() <= max)
+                .collect(Collectors.toList());
     }
 }
