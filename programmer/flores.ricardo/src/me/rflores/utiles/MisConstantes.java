@@ -1,4 +1,4 @@
-package me.rflores.util;
+package me.rflores.utiles;
 
 public class MisConstantes {
     /**

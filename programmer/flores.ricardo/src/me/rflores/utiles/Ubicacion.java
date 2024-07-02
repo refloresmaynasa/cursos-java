@@ -1,4 +1,4 @@
-package me.rflores.util;
+package me.rflores.utiles;
 
 public enum Ubicacion {
     PLATINUM('P', 250.50D),

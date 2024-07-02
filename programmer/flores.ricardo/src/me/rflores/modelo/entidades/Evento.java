@@ -1,14 +1,16 @@
 package me.rflores.modelo.entidades;
 
-import me.rflores.util.MisConstantes;
-import me.rflores.util.Ubicacion;
+import me.rflores.utiles.MisConstantes;
+import me.rflores.utiles.Ubicacion;
 
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class Evento {
+    private final int codigo;
     private final String titulo;
     private final Duration duracion;
     private final LocalTime horaIngreso;
@@ -20,6 +22,7 @@ public class Evento {
     private final List<Asistente> asistentes;
 
     private Evento(Builder builder) {
+        this.codigo = builder.codigo;
         this.titulo = builder.titulo;
         this.horaIngreso = builder.horaIngreso;
         this.horaSalida = builder.horaSalida;
@@ -29,6 +32,10 @@ public class Evento {
 
         this.duracion = Duration.between(this.horaIngreso, this.horaSalida);
         this.asistentes = new LinkedList<>();
+    }
+
+    public int getCodigo() {
+        return codigo;
     }
 
     public String getTitulo() {
@@ -63,6 +70,20 @@ public class Evento {
         return asistentes;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+
+        if (!(obj instanceof Evento evento)) {
+            return false;
+        }
+
+        return evento.codigo == this.codigo
+                && Objects.equals(evento.titulo, this.titulo);
+    }
+
     public double obtenerCostoIngreso() {
         return this.ubicacion.getCosto();
     }
@@ -77,7 +98,7 @@ public class Evento {
                 obtenerCostoIngreso() * MisConstantes.DESCUENTO_TEMPORADA_BAJA;
     }
 
-    public boolean AsistenteYaAgregado(Asistente asistente) {
+    public boolean asistenteYaAgregado(Asistente asistente) {
         if (asistente == null)
             return false;
 
@@ -85,24 +106,30 @@ public class Evento {
                 .anyMatch(a -> asistente == a);
     }
 
-    public boolean AgregarAsistente(Asistente asistente) {
-        if (asistente == null || AsistenteYaAgregado(asistente))
+    boolean agregarAsistente(Asistente asistente) {
+        if (asistente == null || asistenteYaAgregado(asistente))
             return false;
 
         return asistentes.add(asistente);
     }
 
-    public double CalcularTotalRecaudado() {
+    public double calcularTotalRecaudado() {
         return asistentes.size() * obtenerCostoIngreso();
     }
 
     public static class Builder {
+        private int codigo;
         private String titulo;
         private LocalTime horaIngreso;
         private LocalTime horaSalida;
         private boolean temporadaAlta;
         private Ubicacion ubicacion;
         private Expositor expositor;
+
+        public Builder codigo(int codigo) {
+            this.codigo = codigo;
+            return this;
+        }
 
         public Builder titulo(String titulo) {
             this.titulo = titulo;
