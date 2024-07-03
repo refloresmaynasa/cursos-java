@@ -38,7 +38,7 @@ public class EventoDaoMemoria implements EventoDao {
         if (!existeEvento(evento)) {
             eventos.add(evento);
         } else {
-            System.out.println("Ya existe un Evento con los mismos datos");
+            System.out.println("ERROR: Ya existe un Evento con los mismos datos");
         }
     }
 

@@ -15,7 +15,9 @@ public class DaoFactory {
 
     public EventoDao obtenerEventoDao(TipoDao tipo) {
         switch (tipo) {
-            case MEMORIA -> new EventoDaoMemoria();
+            case MEMORIA -> {
+                return new EventoDaoMemoria();
+            }
         }
         return null;
     }

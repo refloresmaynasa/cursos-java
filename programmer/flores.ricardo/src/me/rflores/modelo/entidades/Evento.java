@@ -84,6 +84,21 @@ public class Evento {
                 && Objects.equals(evento.titulo, this.titulo);
     }
 
+    @Override
+    public String toString() {
+        return "Evento{" +
+                "codigo=" + codigo +
+                ", titulo='" + titulo + '\'' +
+                ", duracion=" + duracion.toHoursPart() + ":" + duracion.toMinutesPart() + ":" + duracion.toSecondsPart() +
+                ", horaIngreso=" + horaIngreso +
+                ", horaSalida=" + horaSalida +
+                ", temporadaAlta=" + temporadaAlta +
+                ", ubicacion=" + ubicacion +
+                ", expositor=" + expositor +
+                ", asistentes=" + asistentes +
+                '}';
+    }
+
     public double obtenerCostoIngreso() {
         return this.ubicacion.getCosto();
     }
@@ -106,7 +121,7 @@ public class Evento {
                 .anyMatch(a -> asistente == a);
     }
 
-    boolean agregarAsistente(Asistente asistente) {
+    public boolean agregarAsistente(Asistente asistente) {
         if (asistente == null || asistenteYaAgregado(asistente))
             return false;
 

@@ -54,6 +54,15 @@ public class Asistente {
         return asistente.codigo == this.codigo;
     }
 
+    @Override
+    public String toString() {
+        return "Asistente{" +
+                "codigo=" + codigo +
+                ", nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                '}';
+    }
+
     public static class Builder {
         private int codigo;
         private String nombre;

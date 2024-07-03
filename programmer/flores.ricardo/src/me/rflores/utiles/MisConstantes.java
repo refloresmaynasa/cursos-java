@@ -16,4 +16,6 @@ public class MisConstantes {
      */
     public static final double DESCUENTO_TEMPORADA_ALTA = 0.05;
 
+    /** Opcion de tipo de DAO a utilizar */
+    public static final TipoDao OPCION_DAO = TipoDao.MEMORIA;
 }

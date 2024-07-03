@@ -35,6 +35,16 @@ public class Expositor {
         return correo;
     }
 
+    @Override
+    public String toString() {
+        return "Expositor{" +
+                "codigo=" + codigo +
+                ", nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", sueldo=" + sueldo +
+                '}';
+    }
+
     public static class Builder {
         private int codigo;
         private String nombre;
