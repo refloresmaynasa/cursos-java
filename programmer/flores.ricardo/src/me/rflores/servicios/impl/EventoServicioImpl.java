@@ -7,6 +7,7 @@ import me.rflores.modelo.entidades.Evento;
 import me.rflores.servicios.EventoServicio;
 import me.rflores.utiles.MisConstantes;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class EventoServicioImpl implements EventoServicio {
@@ -19,6 +20,14 @@ public class EventoServicioImpl implements EventoServicio {
     @Override
     public List<Evento> listar() {
         return this.dao.findAll();
+    }
+
+    @Override
+    public List<Evento> listarPorTitulo(boolean desendente) {
+        return desendente ? listar().stream().sorted(Comparator.comparing(Evento::getTitulo).reversed())
+                .toList()
+                : listar().stream().sorted(Comparator.comparing(Evento::getTitulo))
+                .toList();
     }
 
     @Override

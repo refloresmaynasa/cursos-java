@@ -8,12 +8,11 @@ import me.rflores.servicios.impl.EventoServicioImpl;
 import me.rflores.utiles.Ubicacion;
 
 import java.time.LocalTime;
+import java.util.stream.Collectors;
 
-public class Prueba01 {
+public class Prueba02 {
     /**
-     * Genere una clase Prueba01 en un paquete pruebas en donde pueda crear objetos del tipo evento,
-     * agregue valores a sus atributos y muestre un listado de los eventos ordenados por titulo de manera descendente,
-     * el expositor y sus asistentes.
+     * Genere una clase Prueba02 que muestre la lista de eventos y sus precios, agrupados por ubicación.
      */
     public static void main(String[] args) {
         EventoServicio servicio = new EventoServicioImpl();
@@ -126,11 +125,24 @@ public class Prueba01 {
         servicio.agregarAsistente(evento3, asistente4);
         servicio.agregarAsistente(evento4, asistente5);
 
-
         System.out.println("========== RESULTADO ==========");
-        for (var evento : servicio.listarPorTitulo(true)){
+
+        var grupos = servicio.listar().stream()
+                .collect(Collectors.groupingBy(Evento::getUbicacion,
+                        Collectors.toList()));
+
+        grupos.forEach((ubicacion, eventos) -> {
             System.out.println("=====================================");
-            System.out.println("-> " + evento);
-        }
+            System.out.println("Ubicacion: " + ubicacion);
+
+            for (var evento : eventos) {
+                System.out.println("--------------------------------");
+                System.out.println(String.format("Evento: %s %s - #Asistentes: %d %n -> Costo Ingreso: %,6.2f %n -> Descuento: %,6.2f %n -> Monto Total a Pagar: %,6.2f %n -> Total Recaudado: %,6.2f",
+                        evento.getCodigo(), evento.getTitulo(), evento.getAsistentes().size(), evento.obtenerCostoIngreso(),
+                        evento.calcularMontoDescuento(),
+                        evento.calcularMontoTotalAPagar(), evento.calcularTotalRecaudado()));
+
+            }
+        });
     }
 }

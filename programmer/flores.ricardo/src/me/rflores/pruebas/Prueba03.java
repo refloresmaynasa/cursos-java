@@ -9,11 +9,9 @@ import me.rflores.utiles.Ubicacion;
 
 import java.time.LocalTime;
 
-public class Prueba01 {
+public class Prueba03 {
     /**
-     * Genere una clase Prueba01 en un paquete pruebas en donde pueda crear objetos del tipo evento,
-     * agregue valores a sus atributos y muestre un listado de los eventos ordenados por titulo de manera descendente,
-     * el expositor y sus asistentes.
+     * Genera una clase Prueba03 que muestre la lista de eventos y el total recaudado por cada evento.
      */
     public static void main(String[] args) {
         EventoServicio servicio = new EventoServicioImpl();
@@ -126,11 +124,13 @@ public class Prueba01 {
         servicio.agregarAsistente(evento3, asistente4);
         servicio.agregarAsistente(evento4, asistente5);
 
-
         System.out.println("========== RESULTADO ==========");
-        for (var evento : servicio.listarPorTitulo(true)){
-            System.out.println("=====================================");
-            System.out.println("-> " + evento);
+
+        for (var evento : servicio.listar()) {
+            System.out.println("--------------------------------");
+            System.out.printf("Evento: %s %s - #Asistentes: %d %n -> Costo Ingreso: %,6.2f %n -> TOTAL RECAUDADO: %,6.2f%n",
+                    evento.getCodigo(), evento.getTitulo(), evento.getAsistentes().size(), evento.obtenerCostoIngreso(),
+                    evento.calcularTotalRecaudado());
         }
     }
 }

@@ -8,6 +8,8 @@ import java.util.List;
 public interface EventoServicio {
     public List<Evento> listar();
 
+    public List<Evento> listarPorTitulo(boolean desendente);
+
     public void grabar(Evento evento);
 
     public void actualizar(Evento evento);

@@ -88,13 +88,13 @@ public class Evento {
     public String toString() {
         return "Evento{" +
                 "codigo=" + codigo +
-                ", titulo='" + titulo + '\'' +
+                ", titulo='" + titulo + '\'' +"\n" +
                 ", duracion=" + duracion.toHoursPart() + ":" + duracion.toMinutesPart() + ":" + duracion.toSecondsPart() +
                 ", horaIngreso=" + horaIngreso +
-                ", horaSalida=" + horaSalida +
+                ", horaSalida=" + horaSalida +"\n" +
                 ", temporadaAlta=" + temporadaAlta +
-                ", ubicacion=" + ubicacion +
-                ", expositor=" + expositor +
+                ", ubicacion=" + ubicacion +"\n" +
+                ", expositor=" + expositor +"\n" +
                 ", asistentes=" + asistentes +
                 '}';
     }
