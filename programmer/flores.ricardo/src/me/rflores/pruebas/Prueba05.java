@@ -8,12 +8,11 @@ import me.rflores.servicios.impl.EventoServicioImpl;
 import me.rflores.utiles.Ubicacion;
 
 import java.time.LocalTime;
+import java.util.stream.Collectors;
 
-public class Prueba01 {
+public class Prueba05 {
     /**
-     * Genere una clase Prueba01 en un paquete pruebas en donde pueda crear objetos del tipo evento,
-     * agregue valores a sus atributos y muestre un listado de los eventos ordenados por titulo de manera descendente,
-     * el expositor y sus asistentes.
+     * Genera una clase Prueba05 que muestre el sueldo a apagar a todos los expositores que dieron charlas en VIP.
      */
     public static void main(String[] args) {
         EventoServicio servicio = new EventoServicioImpl();
@@ -74,6 +73,13 @@ public class Prueba01 {
                 .nombre("Robert")
                 .sueldo(300.00D)
                 .build();
+        var expositor3 = new Expositor.Builder()
+                .codigo(3)
+                .apellidos("Alberto")
+                .correo("albertot@eduardo.com")
+                .nombre("Robert")
+                .sueldo(700.00D)
+                .build();
 
         var evento1 = new Evento.Builder()
                 .codigo(1)
@@ -115,10 +121,32 @@ public class Prueba01 {
                 .expositor(expositor2)
                 .build();
 
+        var evento5 = new Evento.Builder()
+                .codigo(5)
+                .horaIngreso(LocalTime.of(13, 00))
+                .horaSalida(LocalTime.of(18, 45))
+                .titulo("JAVA PROGRAMMER 005")
+                .temporadaAlta(true)
+                .ubicacion(Ubicacion.VIP)
+                .expositor(expositor3)
+                .build();
+
+        var evento6 = new Evento.Builder()
+                .codigo(6)
+                .horaIngreso(LocalTime.of(13, 00))
+                .horaSalida(LocalTime.of(18, 45))
+                .titulo("JAVA PROGRAMMER 006")
+                .temporadaAlta(true)
+                .ubicacion(Ubicacion.VIP)
+                .expositor(expositor3)
+                .build();
+
         servicio.grabar(evento1);
         servicio.grabar(evento2);
         servicio.grabar(evento3);
         servicio.grabar(evento4);
+        servicio.grabar(evento5);
+        servicio.grabar(evento6);
 
         servicio.agregarAsistente(evento1, asistente1);
         servicio.agregarAsistente(evento2, asistente2);
@@ -126,11 +154,21 @@ public class Prueba01 {
         servicio.agregarAsistente(evento3, asistente4);
         servicio.agregarAsistente(evento4, asistente5);
 
-
         System.out.println("========== RESULTADO ==========");
-        for (var evento : servicio.listarPorTitulo(true)){
-            System.out.println("=====================================");
-            System.out.println("-> " + evento);
-        }
+
+        var ubicacionFiltro = Ubicacion.VIP;
+
+        servicio.listar().stream()
+                .filter(e -> e.getUbicacion().equals(ubicacionFiltro))
+                .map(Evento::getExpositor)
+                .collect(Collectors.groupingBy(Expositor::getCodigo, Collectors.toList()))
+                .forEach((codigo, expositores) -> {
+                    System.out.println("----------------------");
+                    System.out.println(expositores.getFirst());
+                    var total = expositores.stream().mapToDouble(Expositor::getSueldo)
+                            .sum();
+                    System.out.printf("Total Eventos: %s %n", expositores.size());
+                    System.out.printf("TOTAL GANADO: %,6.2f %n", total);
+                });
     }
 }
