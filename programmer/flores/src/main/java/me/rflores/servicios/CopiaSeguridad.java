@@ -20,7 +20,7 @@ public class CopiaSeguridad implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("copia de seguridad -> " + eventos.size());
+        System.out.print("*");
         var rutaArchivo = Paths.get(Config.getProperty("ruta_copia_seguridad", "c:\\eventos"),
             "evento_" + LocalDateTime.now().format(fechaFormato) + ".bak").toString();
 

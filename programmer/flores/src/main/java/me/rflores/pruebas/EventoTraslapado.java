@@ -37,14 +37,19 @@ public class EventoTraslapado {
         System.out.println("* Evento 1 grabado: \n" + evento);
         System.out.println("* Evento 2 a grabar: \n" + eventoTraslapado);
         servicio.grabar(eventoTraslapado);
-        eventoTraslapado = new Evento.Builder().id(2)
+
+        eventoTraslapado = new Evento.Builder().id(12)
             .titulo("Evento 2").fecha(LocalDate.of(2024, 1, 2))
             .horaIngreso(LocalTime.of(9, 0)).horaSalida(LocalTime.of(10, 0))
             .categoria(Categoria.SILVER).capacidad(30).temporadaAlta(true)
             .expositor(expositor).direccion("direccion del evento 2").build();
+
         System.out.println("* Evento 2 ajustado a grabar: \n" + eventoTraslapado);
         servicio.grabar(eventoTraslapado);
         System.out.println("-- Listar Eventos guardados --");
         servicio.listar().forEach(System.out::println);
+
+        servicio.eliminar(eventoId);
+        servicio.eliminar(12);
     }
 }

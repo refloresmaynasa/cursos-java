@@ -21,8 +21,6 @@ import java.util.stream.Collectors;
 
 public class EventoServicioImpl implements EventoServicio {
     private EventoDao dao;
-    private ScheduledExecutorService ejecutor = Executors.newScheduledThreadPool(1);
-
 
     public EventoServicioImpl() {
         this.dao = DaoFactory.getInstance().obtenerEventoDao(Constantes.OPCION_DAO);
@@ -162,11 +160,12 @@ public class EventoServicioImpl implements EventoServicio {
     public void iniciarCopiasDeSeguridad() {
         System.out.println("Inicia proceso de copias de seguridad");
 
+        ScheduledExecutorService ejecutor = Executors.newScheduledThreadPool(1);
+
         int cicloEjecucionSegundos = Integer.valueOf(Config.getProperty("ciclo-ejecucion", "10"));
         int tiempoEjecucionMinutos = Integer.valueOf(Config.getProperty("tiempo-ejecucion", "1"));
 
         var eventos = listar();
-        System.out.println("Eventos " + eventos.size());
         CopiaSeguridad copiaSeguridad = new CopiaSeguridad(eventos);
 
         ejecutor.scheduleAtFixedRate(copiaSeguridad, 0, cicloEjecucionSegundos, TimeUnit.SECONDS);
@@ -174,11 +173,15 @@ public class EventoServicioImpl implements EventoServicio {
         ejecutor.schedule(() -> {
             ejecutor.shutdown();
             try {
-                if (!ejecutor.awaitTermination(1, TimeUnit.SECONDS)) {
+                if (!ejecutor.awaitTermination(3, TimeUnit.SECONDS)) {
                     ejecutor.shutdownNow();
+                    if (!ejecutor.awaitTermination(3, TimeUnit.SECONDS)) {
+                        System.err.println("Aun no concluyo la ejecucion");
+                    }
                 }
             } catch (InterruptedException e) {
                 ejecutor.shutdownNow();
+                Thread.currentThread().interrupt();
             }
         }, tiempoEjecucionMinutos, TimeUnit.MINUTES);
     }

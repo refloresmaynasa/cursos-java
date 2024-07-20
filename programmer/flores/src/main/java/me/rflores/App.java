@@ -1,18 +1,15 @@
 package me.rflores;
 
-import me.rflores.pruebas.CrudEventos;
-import me.rflores.pruebas.EventoTraslapado;
-import me.rflores.servicios.EventoServicio;
-import me.rflores.servicios.impl.EventoServicioImpl;
+import me.rflores.pruebas.*;
 import me.rflores.utiles.Util;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class App {
-    private static EventoServicio servicio = new EventoServicioImpl();
     private static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Util.cargarDatos();
         boolean exit = false;
 
@@ -22,14 +19,15 @@ public class App {
             exit = ejecutarOpcion(choice);
         }
 
-        System.out.println("Thank you for using the application. Goodbye!");
+        System.out.println("Gracias por usar esta aplicacion");
     }
 
     private static void mostrarMenu() {
         System.out.println("\n---- Menu de Operaciones ----");
         System.out.println("1. Prueba CRUD de eventos y validacion que no se puede traslapar eventos");
-        System.out.println("2. Option 2");
-        System.out.println("3. Option 3");
+        System.out.println("2. Crear eventos para varios periodos y mostrarlos por periodo");
+        System.out.println("3. Generacion de copias de seguridad");
+        System.out.println("4. Reportes");
         System.out.println("0. Exit");
         System.out.print("Seleccione una opcion: ");
     }
@@ -42,16 +40,20 @@ public class App {
         return scanner.nextInt();
     }
 
-    private static boolean ejecutarOpcion(int opcion) {
+    private static boolean ejecutarOpcion(int opcion) throws Exception {
+        clearConsole();
         switch (opcion) {
             case 1:
                 crudYNoTraslapar();
                 return false;
             case 2:
-                option2();
+                crearMostrarPorPeriodos();
                 return false;
             case 3:
-                option3();
+                generarCopiaSeguridad();
+                return false;
+            case 4:
+                generarReportes();
                 return false;
             case 0:
                 return true;
@@ -61,18 +63,32 @@ public class App {
         }
     }
 
+    private static void generarReportes() throws Exception {
+        Reportes.generarReportes();
+    }
+
+    private static void generarCopiaSeguridad() {
+        CopiaDeSeguridad.ejecutarCopiaDeSeguridad();
+    }
+
+    private static void crearMostrarPorPeriodos() {
+        EventosPorPeriodos.ejecutarEventosPorPeriodos();
+    }
+
     private static void crudYNoTraslapar() {
         CrudEventos.ejecutarCrud();
         EventoTraslapado.ejecutarPruebaTraslapado();
     }
 
-    private static void option2() {
-        System.out.println("You selected Option 2.");
-        // Add your code for Option 2 here
-    }
-
-    private static void option3() {
-        System.out.println("You selected Option 3.");
-        // Add your code for Option 3 here
+    public static void clearConsole() {
+        try {
+            if (System.getProperty("os.name").contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                new ProcessBuilder("clear").inheritIO().start().waitFor();
+            }
+        } catch (IOException | InterruptedException ex) {
+            System.err.println("Error clearing console: " + ex.getMessage());
+        }
     }
 }

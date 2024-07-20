@@ -6,6 +6,7 @@ import me.rflores.utiles.Periodo;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -26,6 +27,8 @@ public class Evento {
     private final String direccion;
     private final int capacidad;
     private final double costo;
+
+    private static final DateTimeFormatter formatoFechaInfoCorta = DateTimeFormatter.ofPattern("MMMM/dd/EEEE");
 
     private Evento(Builder builder) {
         this.id = builder.id;
@@ -134,6 +137,10 @@ public class Evento {
         return this.categoria.getCosto();
     }
 
+    public String getPeriodo() {
+        return fecha.getYear() + "-" + Periodo.valueOf(fecha.getMonth());
+    }
+
     public double calcularMontoTotalAPagar() {
         var impuesto = obtenerCostoIngreso() * Constantes.IGV;
         return obtenerCostoIngreso() + impuesto;
@@ -172,15 +179,14 @@ public class Evento {
 
     public void imprimirInfoCorta() {
         System.out.println("Evento: " + titulo);
-        System.out.println("Fecha (mes/dia/dia de semana): " + fecha.getMonth() + "/" + fecha.getDayOfMonth()
-            + "/" + fecha.getDayOfWeek());
+        System.out.println("Fecha (mes/dia/dia de semana): " + formatoFechaInfoCorta.format(fecha).toUpperCase());
         System.out.println("Capacidad: " + capacidad);
     }
 
     public String resumen() {
         return "Evento {" +
             "id=" + id +
-            ", PERIODO=" + fecha.getYear() + "-" + Periodo.valueOf(fecha.getMonth()) +
+            ", PERIODO=" + getPeriodo() +
             ", titulo='" + titulo + '\'' +
             ", categoria=" + categoria +
             ", expositor=" + expositor.nombre() +

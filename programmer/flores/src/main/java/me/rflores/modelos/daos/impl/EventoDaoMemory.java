@@ -4,14 +4,14 @@ import me.rflores.modelos.daos.EventoDao;
 import me.rflores.modelos.entidades.Asistente;
 import me.rflores.modelos.entidades.Evento;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class EventoDaoMemory implements EventoDao {
-    private static List<Evento> eventos;
+    private static List<Evento> eventos = Collections.synchronizedList(new ArrayList<>());
 
     public EventoDaoMemory() {
-        this.eventos = new LinkedList<>();
     }
 
     @Override
