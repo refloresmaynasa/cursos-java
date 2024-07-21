@@ -73,46 +73,46 @@ public class Util {
         var asistente19 = new Asistente(219, "Ymelda", "Vecera", "correo@asistente.com", "+591 99999999", "av. asistente, direccion");
         var asistente20 = new Asistente(220, "Poul", "Wagner", "correo@asistente.com", "+591 99999999", "av. asistente, direccion");
 
-        var evento1 = new Evento.Builder().id(1).horaIngreso(LocalTime.of(8, 00)).horaSalida(LocalTime.of(12, 00))
-            .titulo("JAVA 01").temporadaAlta(false).categoria(Categoria.SILVER).expositor(expositor1).capacidad(20)
-            .fecha(LocalDate.of(2024, 1, 7)).direccion("c. Calle 1 #123")
+        var evento1 = new Evento.Builder().withId(1).withHoraIngreso(LocalTime.of(8, 00)).withHoraSalida(LocalTime.of(12, 00))
+            .withTitulo("JAVA 01").withTemporadaAlta(false).withCategoria(Categoria.SILVER).withExpositor(expositor1).withCapacidad(20)
+            .withFecha(LocalDate.of(2024, 1, 7)).withDireccion("c. Calle 1 #123")
             .build();
-        var evento2 = new Evento.Builder().id(2).horaIngreso(LocalTime.of(8, 00)).horaSalida(LocalTime.of(12, 00))
-            .titulo("JAVA 02").temporadaAlta(false).categoria(Categoria.GOLD).expositor(expositor2).capacidad(20)
-            .fecha(LocalDate.of(2024, 1, 8)).direccion("c. Calle 1 #123")
+        var evento2 = new Evento.Builder().withId(2).withHoraIngreso(LocalTime.of(8, 00)).withHoraSalida(LocalTime.of(12, 00))
+            .withTitulo("JAVA 02").withTemporadaAlta(false).withCategoria(Categoria.GOLD).withExpositor(expositor2).withCapacidad(20)
+            .withFecha(LocalDate.of(2024, 1, 8)).withDireccion("c. Calle 1 #123")
             .build();
-        var evento3 = new Evento.Builder().id(3).horaIngreso(LocalTime.of(8, 00)).horaSalida(LocalTime.of(12, 00))
-            .titulo("JAVA 03").temporadaAlta(false).categoria(Categoria.GOLD).expositor(expositor3).capacidad(19)
-            .fecha(LocalDate.of(2024, 1, 9)).direccion("c. Calle 1 #123")
+        var evento3 = new Evento.Builder().withId(3).withHoraIngreso(LocalTime.of(8, 00)).withHoraSalida(LocalTime.of(12, 00))
+            .withTitulo("JAVA 03").withTemporadaAlta(false).withCategoria(Categoria.GOLD).withExpositor(expositor3).withCapacidad(19)
+            .withFecha(LocalDate.of(2024, 1, 9)).withDireccion("c. Calle 1 #123")
             .build();
-        var evento4 = new Evento.Builder().id(4).horaIngreso(LocalTime.of(8, 00)).horaSalida(LocalTime.of(12, 00))
-            .titulo("JAVA 04").temporadaAlta(false).categoria(Categoria.PLATINUM).expositor(expositor1).capacidad(20)
-            .fecha(LocalDate.of(2024, 1, 10)).direccion("c. Calle 1 #123")
+        var evento4 = new Evento.Builder().withId(4).withHoraIngreso(LocalTime.of(8, 00)).withHoraSalida(LocalTime.of(12, 00))
+            .withTitulo("JAVA 04").withTemporadaAlta(false).withCategoria(Categoria.PLATINUM).withExpositor(expositor1).withCapacidad(20)
+            .withFecha(LocalDate.of(2024, 1, 10)).withDireccion("c. Calle 1 #123")
             .build();
-        var evento5 = new Evento.Builder().id(5).horaIngreso(LocalTime.of(8, 00)).horaSalida(LocalTime.of(12, 00))
-            .titulo("JAVA EXPERT").temporadaAlta(false).categoria(Categoria.PLATINUM).expositor(expositor4).capacidad(40)
-            .fecha(LocalDate.of(2024, 3, 1)).direccion("c. Calle 1 #123")
+        var evento5 = new Evento.Builder().withId(5).withHoraIngreso(LocalTime.of(8, 00)).withHoraSalida(LocalTime.of(12, 00))
+            .withTitulo("JAVA EXPERT").withTemporadaAlta(false).withCategoria(Categoria.PLATINUM).withExpositor(expositor4).withCapacidad(40)
+            .withFecha(LocalDate.of(2024, 3, 1)).withDireccion("c. Calle 1 #123")
             .build();
 
-        var evento6 = new Evento.Builder().id(6).horaIngreso(LocalTime.of(8, 00)).horaSalida(LocalTime.of(12, 00))
-            .titulo(".NET 8").temporadaAlta(false).categoria(Categoria.SILVER).expositor(expositor7).capacidad(20)
-            .fecha(LocalDate.of(2024, 4, 1)).direccion("c. Calle 1 #123")
+        var evento6 = new Evento.Builder().withId(6).withHoraIngreso(LocalTime.of(8, 00)).withHoraSalida(LocalTime.of(12, 00))
+            .withTitulo(".NET 8").withTemporadaAlta(false).withCategoria(Categoria.SILVER).withExpositor(expositor7).withCapacidad(20)
+            .withFecha(LocalDate.of(2024, 4, 1)).withDireccion("c. Calle 1 #123")
             .build();
-        var evento7 = new Evento.Builder().id(7).horaIngreso(LocalTime.of(8, 00)).horaSalida(LocalTime.of(12, 00))
-            .titulo(".NET 8").temporadaAlta(true).categoria(Categoria.GOLD).expositor(expositor6).capacidad(25)
-            .fecha(LocalDate.of(2024, 4, 2)).direccion("c. Calle 2 #123")
+        var evento7 = new Evento.Builder().withId(7).withHoraIngreso(LocalTime.of(8, 00)).withHoraSalida(LocalTime.of(12, 00))
+            .withTitulo(".NET 8").withTemporadaAlta(true).withCategoria(Categoria.GOLD).withExpositor(expositor6).withCapacidad(25)
+            .withFecha(LocalDate.of(2024, 4, 2)).withDireccion("c. Calle 2 #123")
             .build();
-        var evento8 = new Evento.Builder().id(8).horaIngreso(LocalTime.of(8, 00)).horaSalida(LocalTime.of(12, 00))
-            .titulo(".NET 8").temporadaAlta(false).categoria(Categoria.GOLD).expositor(expositor6).capacidad(30)
-            .fecha(LocalDate.of(2024, 8, 5)).direccion("c. Calle 3 #123")
+        var evento8 = new Evento.Builder().withId(8).withHoraIngreso(LocalTime.of(8, 00)).withHoraSalida(LocalTime.of(12, 00))
+            .withTitulo(".NET 8").withTemporadaAlta(false).withCategoria(Categoria.GOLD).withExpositor(expositor6).withCapacidad(30)
+            .withFecha(LocalDate.of(2024, 8, 5)).withDireccion("c. Calle 3 #123")
             .build();
-        var evento9 = new Evento.Builder().id(9).horaIngreso(LocalTime.of(8, 00)).horaSalida(LocalTime.of(12, 00))
-            .titulo("JAVA EXPERT").temporadaAlta(true).categoria(Categoria.PLATINUM).expositor(expositor5).capacidad(20)
-            .fecha(LocalDate.of(2024, 11, 4)).direccion("c. Calle 1 #123")
+        var evento9 = new Evento.Builder().withId(9).withHoraIngreso(LocalTime.of(8, 00)).withHoraSalida(LocalTime.of(12, 00))
+            .withTitulo("JAVA EXPERT").withTemporadaAlta(true).withCategoria(Categoria.PLATINUM).withExpositor(expositor5).withCapacidad(20)
+            .withFecha(LocalDate.of(2024, 11, 4)).withDireccion("c. Calle 1 #123")
             .build();
-        var evento10 = new Evento.Builder().id(10).horaIngreso(LocalTime.of(8, 00)).horaSalida(LocalTime.of(12, 00))
-            .titulo("JAVA EXPERT").temporadaAlta(true).categoria(Categoria.PLATINUM).expositor(expositor5).capacidad(100)
-            .fecha(LocalDate.of(2024, 12, 1)).direccion("c. Calle 1 #123")
+        var evento10 = new Evento.Builder().withId(10).withHoraIngreso(LocalTime.of(8, 00)).withHoraSalida(LocalTime.of(12, 00))
+            .withTitulo("JAVA EXPERT").withTemporadaAlta(true).withCategoria(Categoria.PLATINUM).withExpositor(expositor5).withCapacidad(100)
+            .withFecha(LocalDate.of(2024, 12, 1)).withDireccion("c. Calle 1 #123")
             .build();
 
         servicio.grabar(evento1);

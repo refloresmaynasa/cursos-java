@@ -3,7 +3,6 @@ package me.rflores;
 import me.rflores.pruebas.*;
 import me.rflores.utiles.Util;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class App {
@@ -41,7 +40,6 @@ public class App {
     }
 
     private static boolean ejecutarOpcion(int opcion) throws Exception {
-        clearConsole();
         switch (opcion) {
             case 1:
                 crudYNoTraslapar();
@@ -78,17 +76,5 @@ public class App {
     private static void crudYNoTraslapar() {
         CrudEventos.ejecutarCrud();
         EventoTraslapado.ejecutarPruebaTraslapado();
-    }
-
-    public static void clearConsole() {
-        try {
-            if (System.getProperty("os.name").contains("Windows")) {
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            } else {
-                new ProcessBuilder("clear").inheritIO().start().waitFor();
-            }
-        } catch (IOException | InterruptedException ex) {
-            System.err.println("Error clearing console: " + ex.getMessage());
-        }
     }
 }

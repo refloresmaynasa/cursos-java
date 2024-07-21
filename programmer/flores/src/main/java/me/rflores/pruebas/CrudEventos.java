@@ -20,20 +20,20 @@ public class CrudEventos {
         System.out.println("\n====== Pruebas CRUD ======");
         var eventoId = 11;
         var expositor = new Expositor(1, "Pablo", "Espinoza", 2800D, "pablo@expositor.com");
-        var evento = new Evento.Builder().id(eventoId)
-            .titulo("Evento prueba1").fecha(LocalDate.of(2024, 1, 2))
-            .horaIngreso(LocalTime.of(8, 0)).horaSalida(LocalTime.of(9, 0))
-            .categoria(Categoria.SILVER).capacidad(30).temporadaAlta(true)
-            .expositor(expositor).direccion("direccion del evento1").build();
+        var evento = new Evento.Builder().withId(eventoId)
+            .withTitulo("Evento prueba1").withFecha(LocalDate.of(2024, 1, 2))
+            .withHoraIngreso(LocalTime.of(8, 0)).withHoraSalida(LocalTime.of(9, 0))
+            .withCategoria(Categoria.SILVER).withCapacidad(30).withTemporadaAlta(true)
+            .withExpositor(expositor).withDireccion("direccion del evento1").build();
 
         servicio.grabar(evento);
         System.out.println("* Evento grabado correctamente: " + evento.getId());
         System.out.println("* Buscar Evento (grabado): \n" + servicio.buscar(eventoId));
-        evento = new Evento.Builder().id(eventoId)
-            .titulo("Evento prueba 1 Modificado").fecha(LocalDate.of(2024, 1, 2))
-            .horaIngreso(LocalTime.of(10, 0)).horaSalida(LocalTime.of(11, 0))
-            .categoria(Categoria.GOLD).capacidad(30).temporadaAlta(true)
-            .expositor(expositor).direccion("direccion del evento1").build();
+        evento = new Evento.Builder().withId(eventoId)
+            .withTitulo("Evento prueba 1 Modificado").withFecha(LocalDate.of(2024, 1, 2))
+            .withHoraIngreso(LocalTime.of(10, 0)).withHoraSalida(LocalTime.of(11, 0))
+            .withCategoria(Categoria.GOLD).withCapacidad(30).withTemporadaAlta(true)
+            .withExpositor(expositor).withDireccion("direccion del evento1").build();
         servicio.actualizar(evento);
         System.out.println("* Buscar Evento (actualizado): \n" + servicio.buscar(eventoId));
         servicio.eliminar(eventoId);

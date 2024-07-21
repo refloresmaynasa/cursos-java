@@ -28,13 +28,13 @@ public class EventosPorPeriodos {
 
         var expositor = new Expositor(110, "Luis", "Domenech", 3000D, "example@example.com");
 
-        var evento1 = new Evento.Builder().id(1).horaIngreso(LocalTime.of(8, 00)).horaSalida(LocalTime.of(12, 00))
-            .titulo("HTML 2023").temporadaAlta(false).categoria(Categoria.SILVER).expositor(expositor).capacidad(20)
-            .fecha(LocalDate.of(2023, 8, 7)).direccion("c. Calle 1 #123")
+        var evento1 = new Evento.Builder().withId(11).withHoraIngreso(LocalTime.of(8, 00)).withHoraSalida(LocalTime.of(12, 00))
+            .withTitulo("HTML 2023").withTemporadaAlta(false).withCategoria(Categoria.SILVER).withExpositor(expositor).withCapacidad(20)
+            .withFecha(LocalDate.of(2023, 8, 7)).withDireccion("c. Calle 1 #123")
             .build();
-        var evento2 = new Evento.Builder().id(1).horaIngreso(LocalTime.of(8, 00)).horaSalida(LocalTime.of(12, 00))
-            .titulo("HTML 2025").temporadaAlta(false).categoria(Categoria.SILVER).expositor(expositor).capacidad(20)
-            .fecha(LocalDate.of(2025, 3, 7)).direccion("c. Calle 1 #123")
+        var evento2 = new Evento.Builder().withId(12).withHoraIngreso(LocalTime.of(8, 00)).withHoraSalida(LocalTime.of(12, 00))
+            .withTitulo("HTML 2025").withTemporadaAlta(false).withCategoria(Categoria.SILVER).withExpositor(expositor).withCapacidad(20)
+            .withFecha(LocalDate.of(2025, 3, 7)).withDireccion("c. Calle 1 #123")
             .build();
 
         servicio.grabar(evento1);

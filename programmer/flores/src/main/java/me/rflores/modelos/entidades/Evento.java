@@ -1,8 +1,10 @@
 package me.rflores.modelos.entidades;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import me.rflores.utiles.Constantes;
 import me.rflores.utiles.Periodo;
 
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -11,7 +13,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-public class Evento {
+@JsonDeserialize(builder = Evento.Builder.class)
+public class Evento implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private final int id;
     private final String titulo;
     private final Duration duracion;
@@ -36,13 +41,17 @@ public class Evento {
         this.horaIngreso = builder.horaIngreso;
         this.horaSalida = builder.horaSalida;
         this.temporadaAlta = builder.temporadaAlta;
-        this.categoria = builder.categoria;
+        this.categoria = builder.categoria == null ? Categoria.SILVER : builder.categoria;
         this.expositor = builder.expositor;
 
-        this.duracion = Duration.between(this.horaIngreso, this.horaSalida);
+        if (this.horaIngreso != null && this.horaSalida != null) {
+            this.duracion = Duration.between(this.horaIngreso, this.horaSalida);
+        } else {
+            this.duracion = Duration.ofMillis(0);
+        }
         this.asistentes = new LinkedList<>();
 
-        this.fecha = builder.fecha;
+        this.fecha = builder.fecha == null ? LocalDate.now() : builder.fecha;
         this.direccion = builder.direccion;
         this.capacidad = builder.capacidad;
         this.costo = this.categoria.getCosto();
@@ -208,52 +217,52 @@ public class Evento {
         private String direccion;
         private int capacidad;
 
-        public Builder id(int id) {
+        public Builder withId(int id) {
             this.id = id;
             return this;
         }
 
-        public Builder titulo(String titulo) {
+        public Builder withTitulo(String titulo) {
             this.titulo = titulo;
             return this;
         }
 
-        public Builder horaIngreso(LocalTime horaIngreso) {
+        public Builder withHoraIngreso(LocalTime horaIngreso) {
             this.horaIngreso = horaIngreso;
             return this;
         }
 
-        public Builder horaSalida(LocalTime horaSalida) {
+        public Builder withHoraSalida(LocalTime horaSalida) {
             this.horaSalida = horaSalida;
             return this;
         }
 
-        public Builder temporadaAlta(boolean temporadaAlta) {
+        public Builder withTemporadaAlta(boolean temporadaAlta) {
             this.temporadaAlta = temporadaAlta;
             return this;
         }
 
-        public Builder categoria(Categoria categoria) {
+        public Builder withCategoria(Categoria categoria) {
             this.categoria = categoria;
             return this;
         }
 
-        public Builder expositor(Expositor expositor) {
+        public Builder withExpositor(Expositor expositor) {
             this.expositor = expositor;
             return this;
         }
 
-        public Builder fecha(LocalDate fecha) {
+        public Builder withFecha(LocalDate fecha) {
             this.fecha = fecha;
             return this;
         }
 
-        public Builder direccion(String direccion) {
+        public Builder withDireccion(String direccion) {
             this.direccion = direccion;
             return this;
         }
 
-        public Builder capacidad(int capacidad) {
+        public Builder withCapacidad(int capacidad) {
             this.capacidad = capacidad;
             return this;
         }

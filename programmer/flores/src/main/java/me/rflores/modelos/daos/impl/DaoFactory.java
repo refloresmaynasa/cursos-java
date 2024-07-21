@@ -15,9 +15,9 @@ public class DaoFactory {
 
     public EventoDao obtenerEventoDao(TipoDao tipo) {
         switch (tipo) {
-            case MEMORY -> {
-                return new EventoDaoMemory();
-            }
+            case MEMORY -> { return new EventoDaoMemory(); }
+            case FILE -> { return new EventoDaoFile(); }
+            case DATABASE -> { return new EventoDaoDatabase(); }
         }
         return null;
     }
