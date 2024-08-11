@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="me.rflores.sistemaventas.controllers.PrincipalController">
+    <top>
+        <MenuBar>
+            <Menu text="Archivo">
+                <MenuItem text="Añadir Cliente" onAction="#añadirCliente"/>
+                <MenuItem text="Actualizar Cliente" onAction="#actualizarCliente"/>
+                <MenuItem text="Eliminar Cliente" onAction="#eliminarCliente"/>
+                <MenuItem text="Filtrar Clientes" onAction="#filtrarClientes"/>
+                <SeparatorMenuItem/>
+                <MenuItem text="Salir" onAction="#salir"/>
+            </Menu>
+        </MenuBar>
+    </top>
+
+    <center>
+        <TableView fx:id="tablaClientes">
+            <columns>
+                <TableColumn fx:id="columnaCodigo" text="Código" prefWidth="100"/>
+                <TableColumn fx:id="columnaNombre" text="Nombre" prefWidth="150"/>
+                <TableColumn fx:id="columnaApellido" text="Apellido" prefWidth="150"/>
+                <TableColumn fx:id="columnaTelefono" text="Teléfono" prefWidth="120"/>
+                <TableColumn fx:id="columnaEmail" text="Email" prefWidth="200"/>
+                <TableColumn fx:id="columnaFechaRegistro" text="Fecha de Registro" prefWidth="150"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <HBox>
+            <Button text="Añadir" onAction="#añadirCliente"/>
+            <Button text="Actualizar" onAction="#actualizarCliente"/>
+            <Button text="Eliminar" onAction="#eliminarCliente"/>
+            <Button text="Filtrar" onAction="#filtrarClientes"/>
+        </HBox>
+    </bottom>
+</BorderPane>
+
