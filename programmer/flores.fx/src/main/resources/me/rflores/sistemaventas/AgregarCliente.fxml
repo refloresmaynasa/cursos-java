@@ -12,7 +12,7 @@
     </padding>
 
     <Label text="Código:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-    <TextField fx:id="codigoField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+    <TextField fx:id="codigoField" GridPane.rowIndex="0" GridPane.columnIndex="1" editable="false"/>
 
     <Label text="Nombre:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
     <TextField fx:id="nombreField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>

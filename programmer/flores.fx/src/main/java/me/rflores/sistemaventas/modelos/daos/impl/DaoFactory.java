@@ -17,6 +17,7 @@ public class DaoFactory {
         switch (tipo) {
             case MEMORY -> { return new ClienteDaoMemory(); }
             case DATABASE -> { return new ClienteDaoDatabase(); }
+            case FILE -> throw new UnsupportedOperationException();
         }
         return null;
     }

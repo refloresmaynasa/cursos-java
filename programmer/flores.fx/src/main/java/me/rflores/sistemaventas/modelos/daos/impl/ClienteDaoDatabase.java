@@ -119,4 +119,35 @@ public class ClienteDaoDatabase implements ClienteDao {
         cliente.setFechaRegistro(resultSet.getDate("fechaRegistro").toLocalDate());
         return cliente;
     }
+
+    @Override
+    public List<Cliente> findAllByNombre(String nombre) {
+        String sql = "{CALL FindClientesByNombre(?)}";
+        return getClientes(nombre, sql);
+    }
+
+    @Override
+    public List<Cliente> findAllByApellido(String apellido) {
+        String sql = "{CALL FindClientesByApellido(?)}";
+        return getClientes(apellido, sql);
+    }
+
+    private List<Cliente> getClientes(String filtro, String sql) {
+        List<Cliente> clientes = new ArrayList<>();
+        try (Connection connection = DatabaseConnection.getConnection();
+             CallableStatement callableStatement = connection.prepareCall(sql)) {
+            callableStatement.setString(1, filtro);
+
+            ResultSet resultSet = callableStatement.executeQuery();
+
+            while (resultSet.next()) {
+                var cliente = generateCliente(resultSet);
+                clientes.add(cliente);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al obtener clientes: " + e.getMessage());
+        }
+        return clientes;
+    }
 }

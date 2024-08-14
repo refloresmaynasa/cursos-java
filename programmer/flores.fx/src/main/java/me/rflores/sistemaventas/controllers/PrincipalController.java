@@ -14,9 +14,12 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import me.rflores.sistemaventas.VentasApp;
 import me.rflores.sistemaventas.modelos.entidades.Cliente;
+import me.rflores.sistemaventas.servicios.ClienteServicio;
+import me.rflores.sistemaventas.servicios.impl.ClienteServicioImpl;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 public class PrincipalController {
@@ -37,6 +40,8 @@ public class PrincipalController {
 
     private ObservableList<Cliente> listaClientes;
 
+    private ClienteServicio servicio;
+
     @FXML
     public void initialize() {
         columnaCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
@@ -46,10 +51,10 @@ public class PrincipalController {
         columnaEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         columnaFechaRegistro.setCellValueFactory(new PropertyValueFactory<>("fechaRegistro"));
 
+        servicio = new ClienteServicioImpl();
+
         listaClientes = FXCollections.observableArrayList(
-            new Cliente(1, "Juan", "Pérez", "123456789", "juan@example.com"),
-            new Cliente(2, "María", "González", "987654321", "maria@example.com"),
-            new Cliente(3, "Carlos", "Rodríguez", "555123456", "carlos@example.com")
+                servicio.listar()
         );
 
         tablaClientes.setItems(listaClientes);
@@ -60,7 +65,8 @@ public class PrincipalController {
         Cliente tempCliente = new Cliente(0, "", "", "", "");
         boolean guardarClicked = showAgregarClienteDialog(tempCliente);
         if (guardarClicked) {
-            listaClientes.add(tempCliente);
+            servicio.grabar(tempCliente);
+            refreshListaClientes(null);
         }
     }
 
@@ -94,7 +100,8 @@ public class PrincipalController {
         if (selectedCliente != null) {
             boolean guardarClicked = showActualizarClienteDialog(selectedCliente);
             if (guardarClicked) {
-                tablaClientes.refresh();
+                servicio.actualizar(selectedCliente);
+                refreshListaClientes(null);
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -140,7 +147,8 @@ public class PrincipalController {
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
-                listaClientes.remove(selectedCliente);
+                servicio.eliminar(selectedCliente.getCodigo());
+                refreshListaClientes(null);
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -152,8 +160,12 @@ public class PrincipalController {
     }
 
     @FXML
+    private void resetearClientes() {
+        refreshListaClientes(null);
+    }
+
+    @FXML
     private void filtrarClientes() {
-        // Open the search dialog
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(VentasApp.class.getResource("FiltrarClientes.fxml"));
@@ -166,14 +178,13 @@ public class PrincipalController {
 
             FiltrarClientesController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-            controller.setListaClientes(listaClientes);
 
             dialogStage.showAndWait();
 
             if (controller.isBuscarClicked()) {
-                ObservableList<Cliente> clientesFiltrados = controller.getClientesFiltrados();
+                var clientesFiltrados = controller.getClientesFiltrados();
                 if (clientesFiltrados != null && !clientesFiltrados.isEmpty()) {
-                    tablaClientes.setItems(clientesFiltrados);
+                    refreshListaClientes(clientesFiltrados);
                 } else {
                     tablaClientes.setItems(listaClientes);
                 }
@@ -186,5 +197,13 @@ public class PrincipalController {
     @FXML
     private void salir() {
         System.exit(0);
+    }
+
+    private void refreshListaClientes(List<Cliente> clientes) {
+        if (clientes == null) {
+            listaClientes.setAll(servicio.listar());
+        } else {
+            listaClientes.setAll(clientes);
+        }
     }
 }

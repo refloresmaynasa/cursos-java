@@ -54,4 +54,20 @@ BEGIN
     SELECT * FROM Cliente WHERE codigo = p_codigo;
 END //
 
+CREATE PROCEDURE FindClientesByNombre(
+    IN p_nombre VARCHAR(100)
+)
+BEGIN
+    SELECT * FROM Cliente
+    WHERE nombre LIKE CONCAT('%', p_nombre, '%');
+END //
+
+CREATE PROCEDURE FindClientesByApellido(
+    IN p_apellido VARCHAR(100)
+)
+BEGIN
+    SELECT * FROM Cliente
+    WHERE apellido LIKE CONCAT('%', p_apellido, '%');
+END //
+
 DELIMITER ;

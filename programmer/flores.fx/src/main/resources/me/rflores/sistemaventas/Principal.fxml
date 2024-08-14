@@ -39,6 +39,7 @@
             <Button text="Actualizar" onAction="#actualizarCliente"/>
             <Button text="Eliminar" onAction="#eliminarCliente"/>
             <Button text="Filtrar" onAction="#filtrarClientes"/>
+            <Button text="Resetear" onAction="#resetearClientes"/>
         </HBox>
     </bottom>
 </BorderPane>

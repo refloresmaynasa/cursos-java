@@ -2,7 +2,6 @@ package me.rflores.sistemaventas.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import me.rflores.sistemaventas.modelos.entidades.Cliente;
@@ -70,17 +69,6 @@ public class AgregarClienteController {
     private boolean validarEntradas() {
         String errorMessage = "";
 
-        if (codigoField.getText() == null || codigoField.getText().length() == 0) {
-            errorMessage += "Código inválido!\n";
-        } else {
-            // Try to parse the postal code into an int.
-            try {
-                Integer.parseInt(codigoField.getText());
-            } catch (NumberFormatException e) {
-                errorMessage += "Código debe ser un número entero!\n";
-            }
-        }
-
         if (nombreField.getText() == null || nombreField.getText().length() == 0) {
             errorMessage += "Nombre inválido!\n";
         }
@@ -104,7 +92,6 @@ public class AgregarClienteController {
         if (errorMessage.length() == 0) {
             return true;
         } else {
-            // Show the error message
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(dialogStage);
             alert.setTitle("Campos Inválidos");

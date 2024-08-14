@@ -2,13 +2,16 @@ package me.rflores.sistemaventas.modelos.daos.impl;
 
 import me.rflores.sistemaventas.modelos.daos.ClienteDao;
 import me.rflores.sistemaventas.modelos.entidades.Cliente;
+import me.rflores.sistemaventas.utiles.Util;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class ClienteDaoMemory implements ClienteDao {
-    private static List<Cliente> clientes = Collections.synchronizedList(new ArrayList<>());
+    private static List<Cliente> clientes = new ArrayList<>(List.of(
+            new Cliente(1, "Juan", "Pérez", "123456789", "juan@example.com"),
+            new Cliente(2, "María", "González", "987654321", "maria@example.com"),
+            new Cliente(3, "Carlos", "Rodríguez", "555123456", "carlos@example.com")));
 
     public ClienteDaoMemory() {
     }
@@ -16,6 +19,7 @@ public class ClienteDaoMemory implements ClienteDao {
     @Override
     public void create(Cliente cliente) {
         if (!existeCliente(cliente)) {
+            cliente.setCodigo(Util.obtenerSecuencia());
             clientes.add(cliente);
         } else {
             System.out.println("ERROR: Ya existe un Evento con los mismos datos");
@@ -46,11 +50,23 @@ public class ClienteDaoMemory implements ClienteDao {
 
     @Override
     public Cliente find(Integer id) {
-        return this.clientes.stream().filter(e -> e.getCodigo() == id)
-            .findFirst().orElse(null);
+        return clientes.stream().filter(e -> e.getCodigo() == id)
+                .findFirst().orElse(null);
     }
 
     private boolean existeCliente(Cliente cliente) {
         return this.clientes.stream().anyMatch(e -> e.equals(cliente));
+    }
+
+    @Override
+    public List<Cliente> findAllByNombre(String nombre) {
+        return clientes.stream().filter(c -> c.getNombre().startsWith(nombre))
+                .toList();
+    }
+
+    @Override
+    public List<Cliente> findAllByApellido(String apellido) {
+        return clientes.stream().filter(c -> c.getApellido().startsWith(apellido))
+                .toList();
     }
 }

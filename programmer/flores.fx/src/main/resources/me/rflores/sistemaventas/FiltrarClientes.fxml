@@ -13,9 +13,9 @@
     <Label text="Buscar por:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
 
     <HBox spacing="10" GridPane.rowIndex="0" GridPane.columnIndex="1">
-        <RadioButton text="Código" fx:id="codigoRadio" toggleGroup="$toggleGroup"/>
-        <RadioButton text="Nombre" fx:id="nombreRadio" toggleGroup="$toggleGroup"/>
-        <RadioButton text="Apellido" fx:id="apellidoRadio" toggleGroup="$toggleGroup"/>
+        <RadioButton text="Código" fx:id="codigoRadio" toggleGroup="$grupo"/>
+        <RadioButton text="Nombre" fx:id="nombreRadio" toggleGroup="$grupo"/>
+        <RadioButton text="Apellido" fx:id="apellidoRadio" toggleGroup="$grupo"/>
     </HBox>
 
     <Label text="Valor de búsqueda:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>

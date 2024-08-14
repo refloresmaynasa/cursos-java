@@ -5,28 +5,26 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    private static final String URL = Config.getProperty("mysql_conexion");
-    private static final String USER = Config.getProperty("mysql_user");
-    private static final String PASSWORD = Config.getProperty("mysql_password");
-
-    private static Connection connection = null;
+    private static final String DB_URL = Config.getProperty("mysql_conexion");
+    private static final String DB_USER = Config.getProperty("mysql_user");
+    private static final String DB_PASSWORD = Config.getProperty("mysql_password");
 
     private DatabaseConnection() {
     }
 
-    public static Connection getConnection() {
-        if (connection == null) {
-            try {
-                connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                System.out.println("Conexion instanciada con exito");
-            } catch (SQLException e) {
-                System.out.println("Conexion fallida: " + e.getMessage());
-            }
+    public static Connection getConnection() throws SQLException {
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            System.out.println("Connection established successfully.");
+        } catch (SQLException e) {
+            System.err.println("Failed to establish connection: " + e.getMessage());
+            throw e;
         }
         return connection;
     }
 
-    public static void closeConnection() {
+    public static void closeConnection(Connection connection) {
         if (connection != null) {
             try {
                 connection.close();
