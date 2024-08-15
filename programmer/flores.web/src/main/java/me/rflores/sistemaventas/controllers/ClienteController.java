@@ -55,6 +55,7 @@ public class ClienteController extends HttpServlet {
         out.println("<a href='addCliente.jsp'>Agregar Cliente</a><br>");
         out.println("<a href='file-generation?format=pdf'>Generar PDF</a><br>");
         out.println("<a href='file-generation?format=excel'>Generar Excel</a>");
+        out.println("<a href='chart-generation?format=excel'>Generar Grafico</a>");
         out.println("</body></html>");
     }
 
