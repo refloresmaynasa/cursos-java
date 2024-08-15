@@ -1,20 +1,12 @@
 package me.rflores.sistemaventas.servicios.impl;
 
-
 import me.rflores.sistemaventas.modelos.daos.ClienteDao;
 import me.rflores.sistemaventas.modelos.daos.impl.DaoFactory;
 import me.rflores.sistemaventas.modelos.entidades.Cliente;
 import me.rflores.sistemaventas.servicios.ClienteServicio;
 import me.rflores.sistemaventas.utiles.Constantes;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.*;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
+import java.util.List;
 
 public class ClienteServicioImpl implements ClienteServicio {
     private ClienteDao dao;

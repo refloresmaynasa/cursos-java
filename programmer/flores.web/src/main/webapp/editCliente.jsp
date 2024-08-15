@@ -6,7 +6,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Editar Cliente</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Editar un Cliente</title>
 </head>
 <body>
 <h1>Editar Cliente</h1>
@@ -21,8 +24,12 @@
     <input type="email" id="email" name="email" value="<%= cliente.getEmail() %>" required><br><br>
     <label for="telefono">Teléfono:</label><br>
     <input type="text" id="telefono" name="telefono" value="<%= cliente.getTelefono() %>" required><br><br>
+    <label for="totalCompras">Total Compras:</label><br>
+    <input type="text" id="totalCompras" name="totalCompras" value="<%= cliente.getTotalCompras() %>" required><br><br>
     <input type="submit" value="Actualizar">
 </form>
-<a href="clientes">Volver a la lista de clientes</a>
+<div class="toolbar">
+<a href="clientes" class="button">Volver a la lista de clientes</a>
+</div>
 </body>
 </html>

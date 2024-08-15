@@ -14,12 +14,17 @@ public class DatabaseConnection {
 
     public static Connection getConnection() throws SQLException {
         Connection connection = null;
+
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
             System.out.println("Connection established successfully.");
         } catch (SQLException e) {
             System.err.println("Failed to establish connection: " + e.getMessage());
             throw e;
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
         return connection;
     }

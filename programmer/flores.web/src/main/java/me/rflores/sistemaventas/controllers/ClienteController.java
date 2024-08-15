@@ -11,7 +11,6 @@ import me.rflores.sistemaventas.servicios.impl.ClienteServicioImpl;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,22 +39,31 @@ public class ClienteController extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
+        out.println("<head>\n" +
+                "    <meta charset=\"UTF-8\">\n" +
+                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+                "    <link rel=\"stylesheet\" href=\"styles.css\">\n" +
+                "    <title>Agregar un nuevo Cliente</title>\n" +
+                "</head>");
         out.println("<html><body>");
-        out.println("<h1>Clientes</h1>");
+        out.println("<h1>Lista de Clientes</h1>");
         out.println("<table border='1'>");
-        out.println("<tr><th>Código</th><th>Nombre</th><th>Apellido</th><th>Email</th><th>Teléfono</th><th>Fecha Registro</th><th>Acciones</th></tr>");
+        out.println("<tr><th>Código</th><th>Nombre</th><th>Apellido</th><th>Email</th><th>Teléfono</th><th>Total Compras</th><th>Fecha Registro</th><th>Acciones</th></tr>");
 
         for (Cliente cliente : clientes) {
-            out.println("<tr><td>" + cliente.getCodigo() + "</td><td>" + cliente.getNombre() + "</td><td>" + cliente.getApellido() + "</td><td>" + cliente.getEmail() + "</td><td>" + cliente.getTelefono() + "</td><td>" + cliente.getFechaRegistro() + "</td>"
-                    + "<td><a href='clientes?action=edit&codigo=" + cliente.getCodigo() + "'>Editar</a> | "
-                    + "<a href='clientes?action=delete&codigo=" + cliente.getCodigo() + "'>Borrar</a></td></tr>");
+            out.println("<tr><td>" + cliente.getCodigo() + "</td><td>" + cliente.getNombre() + "</td><td>" + cliente.getApellido() + "</td><td>"
+                    + cliente.getEmail() + "</td><td>" + cliente.getTelefono()
+                    + "</td><td>" + cliente.getTotalCompras() + "</td>"
+                    + "<td>" + cliente.getFechaRegistro() + "</td>"
+                    + "<td><a href='clientes?action=edit&codigo=" + cliente.getCodigo() + "' class='button secondary'>Editar</a> | "
+                    + "<a href='clientes?action=delete&codigo=" + cliente.getCodigo() + "' class='button danger'>Borrar</a></td></tr>");
         }
 
         out.println("</table>");
-        out.println("<a href='addCliente.jsp'>Agregar Cliente</a><br>");
-        out.println("<a href='file-generation?format=pdf'>Generar PDF</a><br>");
-        out.println("<a href='file-generation?format=excel'>Generar Excel</a>");
-        out.println("<a href='chart-generation?format=excel'>Generar Grafico</a>");
+        out.println("<div class='toolbar'><a href='addCliente.jsp' class='button success'>Agregar Cliente</a>  ");
+        out.println("<a href='file-generation?format=pdf' class='button secondary'>Generar PDF</a>  ");
+        out.println("<a href='file-generation?format=excel' class='button secondary'>Generar Excel</a>  ");
+        out.println("<a href='chart-generation?format=excel' class='button danger'>Generar Grafico</a> </div>");
         out.println("</body></html>");
     }
 
@@ -91,31 +99,33 @@ public class ClienteController extends HttpServlet {
     }
 
     private void addCliente(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String nombre = request.getParameter("nombre");
-        String apellido = request.getParameter("apellido");
-        String email = request.getParameter("email");
-        String telefono = request.getParameter("telefono");
-        LocalDate fechaRegistro = LocalDate.now();
+        var nombre = request.getParameter("nombre");
+        var apellido = request.getParameter("apellido");
+        var email = request.getParameter("email");
+        var telefono = request.getParameter("telefono");
+        var totalCompras = Double.parseDouble(request.getParameter("totalCompras"));
 
-        Cliente cliente = new Cliente(0, nombre, apellido, telefono, email);
+        var cliente = new Cliente(0, nombre, apellido, telefono, email, totalCompras);
         servicio.grabar(cliente);
 
         response.sendRedirect("clientes");
     }
 
     private void updateCliente(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int codigo = Integer.parseInt(request.getParameter("codigo"));
-        String nombre = request.getParameter("nombre");
-        String apellido = request.getParameter("apellido");
-        String email = request.getParameter("email");
-        String telefono = request.getParameter("telefono");
+        var codigo = Integer.parseInt(request.getParameter("codigo"));
+        var nombre = request.getParameter("nombre");
+        var apellido = request.getParameter("apellido");
+        var email = request.getParameter("email");
+        var telefono = request.getParameter("telefono");
+        var totalCompras = Double.parseDouble(request.getParameter("totalCompras"));
 
-        Cliente existingCliente = servicio.buscar(codigo);
+        var existingCliente = servicio.buscar(codigo);
         if (existingCliente != null) {
             existingCliente.setNombre(nombre);
             existingCliente.setApellido(apellido);
             existingCliente.setEmail(email);
             existingCliente.setTelefono(telefono);
+            existingCliente.setTotalCompras(totalCompras);
 
             servicio.actualizar(existingCliente);
         }

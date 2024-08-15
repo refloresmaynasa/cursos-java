@@ -9,9 +9,9 @@ import java.util.List;
 
 public class ClienteDaoMemory implements ClienteDao {
     private static List<Cliente> clientes = new ArrayList<>(List.of(
-            new Cliente(1, "Juan", "Pérez", "123456789", "juan@example.com"),
-            new Cliente(2, "María", "González", "987654321", "maria@example.com"),
-            new Cliente(3, "Carlos", "Rodríguez", "555123456", "carlos@example.com")));
+            new Cliente(1, "Juan", "Pérez", "123456789", "juan@example.com", 1500D),
+            new Cliente(2, "María", "González", "987654321", "maria@example.com", 2500D),
+            new Cliente(3, "Carlos", "Rodríguez", "555123456", "carlos@example.com", 4000D)));
 
     public ClienteDaoMemory() {
     }

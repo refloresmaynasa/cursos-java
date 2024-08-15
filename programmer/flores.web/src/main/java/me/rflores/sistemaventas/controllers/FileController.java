@@ -65,43 +65,40 @@ public class FileController extends HttpServlet {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PdfWriter writer = new PdfWriter(baos);
         PdfDocument pdfDoc = new PdfDocument(writer);
-        pdfDoc.setDefaultPageSize(PageSize.A4);
+        pdfDoc.setDefaultPageSize(PageSize.A4.rotate());
         Document document = new Document(pdfDoc);
 
-        // Add logo to the PDF
         String logoPath = getServletContext().getRealPath("/WEB-INF/logo.png");
         Image logo = new Image(ImageDataFactory.create(logoPath));
-        logo.setHeight(50);
-        logo.setWidth(100);
+        logo.setHeight(80);
+        logo.setWidth(80);
         document.add(logo);
 
-        // Add Title
         PdfFont font = PdfFontFactory.createFont("Helvetica-Bold");
-        Paragraph title = new Paragraph("List of Clientes")
+        Paragraph title = new Paragraph("Lista de Clientes")
                 .setFont(font)
                 .setFontSize(18)
                 .setMarginBottom(10);
         document.add(title);
 
-        // Create Table
-        Table table = new Table(new float[]{1, 2, 2, 2, 2, 2});
+        Table table = new Table(new float[]{1, 2, 2, 2, 2, 2, 2});
         table.setWidth(UnitValue.createPercentValue(100));
 
-        // Header
         table.addHeaderCell(new Cell().add(new Paragraph("Código")).setBackgroundColor(ColorConstants.LIGHT_GRAY));
         table.addHeaderCell(new Cell().add(new Paragraph("Nombre")).setBackgroundColor(ColorConstants.LIGHT_GRAY));
         table.addHeaderCell(new Cell().add(new Paragraph("Apellido")).setBackgroundColor(ColorConstants.LIGHT_GRAY));
         table.addHeaderCell(new Cell().add(new Paragraph("Email")).setBackgroundColor(ColorConstants.LIGHT_GRAY));
         table.addHeaderCell(new Cell().add(new Paragraph("Teléfono")).setBackgroundColor(ColorConstants.LIGHT_GRAY));
+        table.addHeaderCell(new Cell().add(new Paragraph("Total Compras")).setBackgroundColor(ColorConstants.LIGHT_GRAY));
         table.addHeaderCell(new Cell().add(new Paragraph("Fecha Registro")).setBackgroundColor(ColorConstants.LIGHT_GRAY));
 
-        // Data
         for (Cliente cliente : clientes) {
             table.addCell(new Cell().add(new Paragraph(String.valueOf(cliente.getCodigo()))));
             table.addCell(new Cell().add(new Paragraph(cliente.getNombre())));
             table.addCell(new Cell().add(new Paragraph(cliente.getApellido())));
             table.addCell(new Cell().add(new Paragraph(cliente.getEmail())));
             table.addCell(new Cell().add(new Paragraph(cliente.getTelefono())));
+            table.addCell(new Cell().add(new Paragraph(String.valueOf(cliente.getTotalCompras()))));
             table.addCell(new Cell().add(new Paragraph(cliente.getFechaRegistro().toString())));
         }
 
@@ -121,16 +118,15 @@ public class FileController extends HttpServlet {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Clientes");
 
-        // Header
         Row headerRow = sheet.createRow(0);
         headerRow.createCell(0).setCellValue("Código");
         headerRow.createCell(1).setCellValue("Nombre");
         headerRow.createCell(2).setCellValue("Apellido");
         headerRow.createCell(3).setCellValue("Email");
         headerRow.createCell(4).setCellValue("Teléfono");
-        headerRow.createCell(5).setCellValue("Fecha Registro");
+        headerRow.createCell(5).setCellValue("Total Compras");
+        headerRow.createCell(6).setCellValue("Fecha Registro");
 
-        // Data
         int rowNum = 1;
         for (Cliente cliente : clientes) {
             Row row = sheet.createRow(rowNum++);
@@ -139,7 +135,8 @@ public class FileController extends HttpServlet {
             row.createCell(2).setCellValue(cliente.getApellido());
             row.createCell(3).setCellValue(cliente.getEmail());
             row.createCell(4).setCellValue(cliente.getTelefono());
-            row.createCell(5).setCellValue(cliente.getFechaRegistro().toString());
+            row.createCell(5).setCellValue(cliente.getTotalCompras());
+            row.createCell(6).setCellValue(cliente.getFechaRegistro().toString());
         }
 
         OutputStream os = response.getOutputStream();

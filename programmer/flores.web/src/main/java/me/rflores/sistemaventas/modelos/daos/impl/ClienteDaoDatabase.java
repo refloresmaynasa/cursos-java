@@ -14,7 +14,7 @@ import java.util.List;
 public class ClienteDaoDatabase implements ClienteDao {
     @Override
     public void create(Cliente cliente) {
-        String sql = "{CALL AddCliente(?, ?, ?, ?, ?)}";
+        String sql = "{CALL AddCliente(?, ?, ?, ?, ?, ?)}";
         try (Connection connection = DatabaseConnection.getConnection();
              CallableStatement callableStatement = connection.prepareCall(sql)) {
 
@@ -23,6 +23,7 @@ public class ClienteDaoDatabase implements ClienteDao {
             callableStatement.setString(3, cliente.getEmail());
             callableStatement.setString(4, cliente.getTelefono());
             callableStatement.setDate(5, java.sql.Date.valueOf(cliente.getFechaRegistro()));
+            callableStatement.setDouble(6, cliente.getTotalCompras());
 
             callableStatement.executeUpdate();
             System.out.println("Cliente agregado exitosamente!");
@@ -43,7 +44,7 @@ public class ClienteDaoDatabase implements ClienteDao {
             callableStatement.setString(3, cliente.getApellido());
             callableStatement.setString(4, cliente.getEmail());
             callableStatement.setString(5, cliente.getTelefono());
-            callableStatement.setDate(6, java.sql.Date.valueOf(cliente.getFechaRegistro()));
+            callableStatement.setDouble(6, cliente.getTotalCompras());
 
             callableStatement.executeUpdate();
             System.out.println("Cliente actualizado exitosamente!");
@@ -117,6 +118,7 @@ public class ClienteDaoDatabase implements ClienteDao {
         cliente.setEmail(resultSet.getString("email"));
         cliente.setTelefono(resultSet.getString("telefono"));
         cliente.setFechaRegistro(resultSet.getDate("fechaRegistro").toLocalDate());
+        cliente.setTotalCompras(resultSet.getDouble("totalCompras"));
         return cliente;
     }
 

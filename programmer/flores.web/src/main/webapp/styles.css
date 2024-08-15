@@ -1,0 +1,340 @@
+/* General styles for the body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Styling headings */
+h1, h2, h3, h4, h5, h6 {
+    color: #444;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Styling paragraphs */
+p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Container for centralizing content */
+div {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Button styles */
+button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+button.danger {
+    background-color: #dc3545;
+}
+
+button.danger:hover {
+    background-color: #c82333;
+}
+
+button.primary {
+    background-color: #007bff;
+}
+
+button.primary:hover {
+    background-color: #0056b3;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 8px;
+}
+
+.modal-content .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modal-content .close:hover,
+.modal-content .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* General form styles */
+form {
+    display: block;
+    flex-direction: column;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="number"],
+form input[type="date"],
+form select,
+form textarea {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    width: 100%;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="number"]:focus,
+form input[type="date"]:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Submit button styles */
+form input[type="submit"],
+form button[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    width: fit-content;
+    align-self: center;
+    text-transform: uppercase;
+}
+
+form input[type="submit"]:hover,
+form button[type="submit"]:hover {
+    background-color: #218838;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+form input[type="submit"]:active,
+form button[type="submit"]:active {
+    background-color: #1e7e34;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Hyperlink styles */
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+a:active {
+    color: #003f7f;
+}
+
+/* Additional form button styles */
+form button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+form button:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Different button colors */
+form button.primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+form button.primary:hover {
+    background-color: #0056b3;
+}
+
+form button.danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+form button.danger:hover {
+    background-color: #c82333;
+}
+
+form button.secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+form button.secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Basic button styling for <a> tags */
+a.button {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 4px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: center;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+a.button:hover {
+    background-color: #0056b3;
+}
+
+a.button:active {
+    background-color: #003f7f;
+}
+
+/* Styling for a toolbar container */
+.toolbar {
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+
+/* Additional styles for button variations (optional) */
+a.button.secondary {
+    background-color: #6c757d;
+}
+
+a.button.secondary:hover {
+    background-color: #5a6268;
+}
+
+a.button.success {
+    background-color: #28a745;
+}
+
+a.button.success:hover {
+    background-color: #218838;
+}
+
+a.button.danger {
+    background-color: #dc3545;
+}
+
+a.button.danger:hover {
+    background-color: #c82333;
+}
+
+a.button.light {
+    background-color: #f8f9fa;
+    color: #000;
+}
+
+a.button.light:hover {
+    background-color: #e2e6ea;
+}
+
+a.button.dark {
+    background-color: #343a40;
+}
+
+a.button.dark:hover {
+    background-color: #23272b;
+}
+
+/* Disabled button state */
+a.button.disabled {
+    background-color: #cccccc;
+    color: #666666;
+    pointer-events: none;
+    cursor: not-allowed;
+}

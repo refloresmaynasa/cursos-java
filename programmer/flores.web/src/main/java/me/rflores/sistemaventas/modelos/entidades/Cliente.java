@@ -10,16 +10,19 @@ public class Cliente {
     private String email;
     private LocalDate fechaRegistro;
 
+    private double totalCompras;
+
     public Cliente() {
     }
 
-    public Cliente(int codigo, String nombre, String apellido, String telefono, String email) {
+    public Cliente(int codigo, String nombre, String apellido, String telefono, String email, double totalCompras) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
         this.email = email;
         this.fechaRegistro = LocalDate.now();
+        this.totalCompras = totalCompras;
     }
 
     public int getCodigo() {
@@ -60,6 +63,14 @@ public class Cliente {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public double getTotalCompras() {
+        return totalCompras;
+    }
+
+    public void setTotalCompras(double totalCompras) {
+        this.totalCompras = totalCompras;
     }
 
     public LocalDate getFechaRegistro() {
