@@ -1,0 +1,11 @@
+INSERT INTO clientes (nombre, apellido, telefono, email, totalCompras, fechaRegistro) VALUES ('Juan', 'Perez', '123456789', 'juan.perez@example.com', 20000, DATE '2024-01-01');
+INSERT INTO clientes (nombre, apellido, telefono, email, totalCompras, fechaRegistro) VALUES ('Ana', 'Lopez', '987654321', 'ana.lopez@example.com', 50000, DATE '2024-01-02');
+INSERT INTO clientes (nombre, apellido, telefono, email, totalCompras, fechaRegistro) VALUES ('Carlos', 'Gomez', '5551234567', 'carlos.gomez@example.com', 15000, '2024-01-05');
+INSERT INTO clientes (nombre, apellido, telefono, email, totalCompras, fechaRegistro) VALUES ('Maria', 'Hernandez', '5557654321', 'maria.hernandez@example.com', 25000, '2024-01-06');
+INSERT INTO clientes (nombre, apellido, telefono, email, totalCompras, fechaRegistro) VALUES ('Elena', 'Sanchez', '5556789123', 'elena.sanchez@example.com', 45000, '2024-01-08');
+INSERT INTO clientes (nombre, apellido, telefono, email, totalCompras, fechaRegistro) VALUES ('Jorge', 'Lopez', '5553456789', 'jorge.lopez@example.com', 55000, '2024-01-09');
+INSERT INTO clientes (nombre, apellido, telefono, email, totalCompras, fechaRegistro) VALUES ('Laura', 'Perez', '5552345678', 'laura.perez@example.com', 65000, '2024-01-10');
+INSERT INTO clientes (nombre, apellido, telefono, email, totalCompras, fechaRegistro) VALUES ('Ricardo', 'Ramirez', '5558765432', 'ricardo.ramirez@example.com', 75000, '2024-01-11');
+INSERT INTO clientes (nombre, apellido, telefono, email, totalCompras, fechaRegistro) VALUES ('Sofia', 'Torres', '5559871234', 'sofia.torres@example.com', 85000, '2024-01-12');
+INSERT INTO clientes (nombre, apellido, telefono, email, totalCompras, fechaRegistro) VALUES ('Fernando', 'Vargas', '5553219876', 'fernando.vargas@example.com', 95000, '2024-01-13');
+INSERT INTO clientes (nombre, apellido, telefono, email, totalCompras, fechaRegistro) VALUES ('Lucia', 'Ortega', '5557894561', 'lucia.ortega@example.com', 105000, '2024-01-14');
