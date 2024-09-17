@@ -1,21 +1,34 @@
 package me.rflores.mvcclientes.models.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 import java.io.Serializable;
 
 @Entity
+@Table(name = "clientes")
 public class Cliente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotBlank(message = "El apellido no puede estar vacío")
+    @Size(max = 20, message = "El apellido no debe tener mas de 20 caracteres")
     private String apellido;
+
+    @NotBlank(message = "El nombre no puede estar vacío")
+    @Size(max = 20, message = "El nombre no debe tener mas de 20 caracteres")
     private String nombre;
+
+    @Email(message = "Correo electrónico no válido")
+    @NotBlank(message = "El correo no puede estar vacío")
     private String correo;
+
+    @NotBlank(message = "El teléfono no puede estar vacío")
+    @Pattern(regexp = "\\d{7,10}", message = "El teléfono debe tener entre 7 y 10 dígitos")
     private String telefono;
 
     public Cliente() {

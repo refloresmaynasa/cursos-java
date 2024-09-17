@@ -2,10 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Clientes</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
 <h1>Lista de Clientes</h1>
+
 <a href="/clientes/nuevo">Agregar Cliente</a>
+
 <table border="1">
     <thead>
     <tr>
@@ -31,5 +34,9 @@
     </tr>
     </tbody>
 </table>
+
+<footer>
+    &copy; 2024 - Ricky
+</footer>
 </body>
 </html>

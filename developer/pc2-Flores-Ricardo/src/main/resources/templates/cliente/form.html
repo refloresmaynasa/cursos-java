@@ -2,17 +2,40 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Formulario Cliente</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
+
 <h1>Formulario Cliente</h1>
+
+<a href="/clientes">Inicio / Clientes</a>
+
 <form th:action="@{/clientes}" th:object="${cliente}" method="post">
     <input type="hidden" th:field="*{id}"/>
-    <label>Apellido: <input type="text" th:field="*{apellido}"/></label><br/>
-    <label>Nombre: <input type="text" th:field="*{nombre}"/></label><br/>
-    <label>Correo: <input type="text" th:field="*{correo}"/></label><br/>
-    <label>Teléfono: <input type="text" th:field="*{telefono}"/></label><br/>
+
+    <!-- Apellido Field -->
+    <label>Apellido: <input type="text" th:field="*{apellido}"/></label>
+    <div class="error" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></div>
+
+    <!-- Nombre Field -->
+    <label>Nombre: <input type="text" th:field="*{nombre}"/></label>
+    <div class="error" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+
+    <!-- Correo Field -->
+    <label>Correo: <input type="email" th:field="*{correo}"/></label>
+    <div class="error" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></div>
+
+    <!-- Teléfono Field -->
+    <label>Teléfono: <input type="text" th:field="*{telefono}"/></label>
+    <div class="error" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
+
+    <!-- Submit Button -->
     <button type="submit">Guardar</button>
 </form>
-</body>
 
+<footer>
+    &copy; 2024 - Ricky
+</footer>
+
+</body>
 </html>
