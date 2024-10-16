@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Agregar Cliente</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+</head>
+<body>
+<h1>Agregar Nuevo Cliente</h1>
+<form action="#" th:action="@{/clientes/agregar}" th:object="${cliente}" method="post">
+    <label>Nombre:</label>
+    <input type="text" th:field="*{nombre}" /><br/>
+    <label>Apellido:</label>
+    <input type="text" th:field="*{apellido}" /><br/>
+    <label>Correo:</label>
+    <input type="text" th:field="*{correo}" /><br/>
+    <label>Teléfono:</label>
+    <input type="text" th:field="*{telefono}" /><br/>
+    <button type="submit">Agregar</button>
+</form>
+<a href="/clientes">Volver a la lista</a>
+</body>
+</html>
