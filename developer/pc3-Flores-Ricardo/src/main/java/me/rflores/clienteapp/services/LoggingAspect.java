@@ -14,22 +14,19 @@ import org.springframework.stereotype.Component;
 public class LoggingAspect {
     private static final Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
 
-    // Pointcut that matches all repository methods
-    @Before("execution(* com.example.demo.repository.*.*(..))")
+    @Before("execution(* me.rflores.clienteapp.models.daos.*.*(..))")
     public void logBefore(JoinPoint joinPoint) {
-        logger.info("Before method: " + joinPoint.getSignature().getName());
+        logger.info("Antes del metodo: " + joinPoint.getSignature().getName());
     }
 
-    // Logging successful execution of repository methods
     @AfterReturning(pointcut = "execution(* me.rflores.clienteapp.models.daos.*.*(..))", returning = "result")
     public void logAfterReturning(JoinPoint joinPoint, Object result) {
-        logger.info("Method returned: " + joinPoint.getSignature().getName() + " Result: " + result);
+        logger.info("Resultado Metodo: " + joinPoint.getSignature().getName() + " Result: " + result);
     }
 
-    // Logging exceptions thrown by repository methods
     @AfterThrowing(pointcut = "execution(* me.rflores.clienteapp.models.daos.*.*(..))", throwing = "error")
     public void logAfterThrowing(JoinPoint joinPoint, Throwable error) {
-        logger.error("Exception in method: " + joinPoint.getSignature().getName() + " Error: " + error);
+        logger.error("Exception en el metodo: " + joinPoint.getSignature().getName() + " Error: " + error);
     }
 }
 

@@ -1,8 +1,6 @@
 package me.rflores.clienteapp.controllers;
 
-import org.springframework.batch.core.Job;
-import org.springframework.batch.core.JobParametersBuilder;
-import org.springframework.batch.core.JobParametersInvalidException;
+import org.springframework.batch.core.*;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
 import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
@@ -11,6 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @RequestMapping("api/batch")
 @RestController
@@ -31,10 +33,13 @@ public class BatchJobController {
 
     @PostMapping("")
     public String runBatchJob() {
+        JobParameters parameters = new JobParametersBuilder()
+                .addDate("time", new Date()) // Optional: just to have a unique parameter
+                .toJobParameters();
+
         try {
-            jobLauncher.run(job, new JobParametersBuilder()
-                    .addLong("time", System.currentTimeMillis()) // Use a unique parameter for job execution
-                    .toJobParameters());
+            JobExecution jobExecution = jobLauncher.run(job, parameters);
+            jobExecution.setStartTime(LocalDateTime.now());
             return "Batch job started successfully!";
         } catch (JobExecutionAlreadyRunningException | JobRestartException | JobInstanceAlreadyCompleteException e) {
             e.printStackTrace();

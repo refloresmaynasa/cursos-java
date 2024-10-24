@@ -10,6 +10,8 @@ import org.springframework.batch.core.JobExecutionListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class JobCompletionNotificationListener implements JobExecutionListener {
 
@@ -20,6 +22,11 @@ public class JobCompletionNotificationListener implements JobExecutionListener {
 
     @Autowired
     private TarjetaCreditoRepository tarjetaCreditoRepository;
+
+    @Override
+    public void beforeJob(JobExecution jobExecution) {
+        jobExecution.setStartTime(LocalDateTime.now());
+    }
 
     @Override
     public void afterJob(JobExecution jobExecution) {

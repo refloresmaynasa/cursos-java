@@ -5,13 +5,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
-@EnableBatchProcessing
 @SpringBootApplication
+@EnableBatchProcessing
 @EnableAspectJAutoProxy
 public class Pc3FloresRicardoApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(Pc3FloresRicardoApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(Pc3FloresRicardoApplication.class, args);
+    }
 
 }
